@@ -14,7 +14,8 @@ class LogLevel(Enum):
 
 class Logger:
     def __init__(self, name: type, filename: Path|NoneType=None) -> None:
-        self.__name: str = "{}.{}".format(name.__module__, name.__name__)
+        self.__name: str = "{}.Menu(parent=self)
+        # menu.display(){}".format(name.__module__, name.__name__)
 
     def log(self, level: LogLevel, message: object):
         color = Fore.RESET
