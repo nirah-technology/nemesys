@@ -1,7 +1,7 @@
 from direct.showbase.ShowBase import ShowBase
 
-from warlikecraft.map.maps import World
-from warlikecraft.views.menus import MainMenu, Menu
+from .map.maps import World
+from .views.menus import MainMenu, Menu
 
 
 class WarlikecraftGame(ShowBase):

@@ -9,8 +9,11 @@
 
 ## **SUMMARY**
 -----
-1. Overview
-2. Requirements
+1. [OVERVIEW](#OVERVIEW)
+2. [MODULE COMPILATION](#MODULE_COMPILATION)
+2. [MODULE INSTALLATION](#MODULE-INSTALLATION)
+2. [MODULE USAGE](#MODULE-USAGE)
+2. [PICTURES GENERATOR](#PICTURES_GENERATOR)
 3. Comp
 
 ## **OVERVIEW**
@@ -19,7 +22,7 @@
 
 However, ***`War-Like-Craft`*** is not a Massively Multiplayer Online Role-Playing game, but it's an offline/solo playable video game.
 
-## **COMPILING**
+## **MODULE COMPILATION**
 -----
 When we compile this module, a new file using `.whl` extension will be created.
 When this last file exists, it can be used/install the `warlikecraft` module.
@@ -28,14 +31,14 @@ When this last file exists, it can be used/install the `warlikecraft` module.
 python setup.py bdist_wheel
 ```
 
-## **INSTALLING**
+## **MODULE INSTALLATION**
 -----
 When we install this module, we can use the `warlikecraft` module.
 ```cmd
 python -m pip install dist/warlikecraft-<sersion>-py3-none-any.whl
 ```
 
-## **USAGE**
+## **MODULE USAGE**
 If you want to use the `warlikecraft` module as executable, yo can use this boilerplate code:
 
 ```python
@@ -44,6 +47,15 @@ from warlikecraft import WarlikecraftGame
 game: WarlikecraftGame = WarlikecraftGame()
 game.start()
 ```
+
+## **PICTURES GENERATOR**
+All pictures of the video game are dynamicaly generated from HTML/CSS sources.
+- **HTML/CSS sources**: [resources/assets/pictures/src/styling/styling.html](resources/assets/pictures/src/styling/styling.html)
+
+To generate picture, a Python script must be executed.
+- **Python script file**: [tools/python/png-generator.py](tools/python/png-generator.py)
+
+This file will use a module called `html2png` that expose the `HtmlSnapshot` class that and `snapshot(url, html_id, folder_destination, picture_name)` static function.
 
 ## **FEATURE**
 -----

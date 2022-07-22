@@ -1,1 +1,0 @@
-# html2png --html file.html --css style.css --background-color rgb|rgba|hexa --enable-transparency
