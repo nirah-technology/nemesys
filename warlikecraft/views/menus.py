@@ -39,8 +39,8 @@ class MainMenu(Menu):
     def __start_new_game(self):
         print("Start new game")
         self.hide()
-        # character_creator: CharacterCreator = CharacterCreator()
-        # character_creator.display()
+        character_creator: CharacterCreator = CharacterCreator()
+        character_creator.display()
 
     def __continue_game(self):
         print("Continue game")

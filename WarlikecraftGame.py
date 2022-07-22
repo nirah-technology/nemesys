@@ -10,8 +10,8 @@ class WarlikecraftGame(ShowBase):
     
     def __initialize(self):
         self.setBackgroundColor(0,0,0)
-        # menu: Menu = MainMenu(parent=self)
-        # menu.display()
+        menu: Menu = MainMenu(parent=self)
+        menu.display()
 
     def start(self):
         self.__initialize()
