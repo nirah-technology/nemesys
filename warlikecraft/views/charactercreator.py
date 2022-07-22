@@ -30,12 +30,29 @@ class CharacterCreator:
         gender_panel = DirectFrame(frameColor = (1, 1, 1, 0))
         # gender_panel.setPos
         test = [self.__selected_gender]
-        genders_radio_buttons = [
-            DirectRadioButton(text='Male', variable=test, value=[Gender.MALE],
-                            scale=0.05, pos=(-0.4, 0, 0), command=self.__use_male_gender),
-            DirectRadioButton(text='Feminine', variable=test, value=[Gender.FEMININE],
-                            scale=0.05, pos=(0, 0, 0), command=self.__use_feminine_gender)
-        ]
+        male_radio_button = DirectRadioButton(
+                text='Male', 
+                variable=test, 
+                value=[Gender.MALE],
+                scale=0.05,
+                parent=gender_panel,
+                boxImage="resources/assets/pictures/bin/gender-masculine.png",
+                pos=(0, 0, 0), 
+                command=self.__use_male_gender)
+        feminine_radio_button = DirectRadioButton(
+                text='Feminine', 
+                variable=test, 
+                value=[Gender.FEMININE],
+                scale=0.05,
+                parent=gender_panel,
+                boxImage="resources/assets/pictures/bin/gender-feminine.png",
+                pos=(0.325, 0, 0),
+                command=self.__use_male_gender)
+
+        male_radio_button.reparentTo(gender_panel)
+        feminine_radio_button.reparentTo(gender_panel)
+
+        genders_radio_buttons = [male_radio_button, feminine_radio_button]
 
         for button in genders_radio_buttons:
             button.setOthers(genders_radio_buttons)
