@@ -1,4 +1,4 @@
-# **War-Like-Craft**
+# **NEMESYS**
 -----
 
 ![WarLikeCraft - Version](https://img.shields.io/badge/version-0.1.0-informational?style=flat)
@@ -18,14 +18,14 @@
 
 ## **OVERVIEW**
 -----
-***`War-Like-Craft`*** is a video game based on the ***`World Of Warcraft`*** video game developped by **`Blizard`** company.
+***`Nemesys`*** is a video game based on the ***`World Of Warcraft`*** video game developped by **`Blizard`** company.
 
-However, ***`War-Like-Craft`*** is not a Massively Multiplayer Online Role-Playing game, but it's an offline/solo playable video game.
+However, ***`Nemesys`*** is not a Massively Multiplayer Online Role-Playing game, but it's an offline/solo playable video game.
 
 ## **MODULE COMPILATION**
 -----
 When we compile this module, a new file using `.whl` extension will be created.
-When this last file exists, it can be used/install the `warlikecraft` module.
+When this last file exists, it can be used/install the `nemesys` module.
 
 ```cmd
 python setup.py bdist_wheel
@@ -33,18 +33,18 @@ python setup.py bdist_wheel
 
 ## **MODULE INSTALLATION**
 -----
-When we install this module, we can use the `warlikecraft` module.
+When we install this module, we can use the `nemesys` module.
 ```cmd
-python -m pip install dist/warlikecraft-<sersion>-py3-none-any.whl
+python -m pip install dist/nemesys-<sersion>-py3-none-any.whl
 ```
 
 ## **MODULE USAGE**
-If you want to use the `warlikecraft` module as executable, yo can use this boilerplate code:
+If you want to use the `nemesys` module as executable, yo can use this boilerplate code:
 
 ```python
-from warlikecraft import WarlikecraftGame
+from nemesys import NemesysGame
 
-game: WarlikecraftGame = WarlikecraftGame()
+game: NemesysGame = NemesysGame()
 game.start()
 ```
 

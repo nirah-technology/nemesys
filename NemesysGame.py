@@ -1,10 +1,13 @@
+from panda3d.core import loadPrcFile
+
 from direct.showbase.ShowBase import ShowBase
 
-from .map.maps import World
-from .views.menus import MainMenu, Menu
+from nemesys.map.maps import World
+from nemesys.views.menus import MainMenu, Menu
 
+loadPrcFile("conf.prc")
 
-class WarlikecraftGame(ShowBase):
+class NemesysGame(ShowBase):
     def __init__(self):
         super().__init__()
     
@@ -18,5 +21,5 @@ class WarlikecraftGame(ShowBase):
         self.run()
 
 if (__name__ == "__main__"):
-    game: WarlikecraftGame = WarlikecraftGame()
+    game: NemesysGame = NemesysGame()
     game.start()

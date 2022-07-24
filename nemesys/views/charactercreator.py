@@ -1,6 +1,6 @@
 from direct.gui.DirectGui import DirectButton, DirectFrame, DGG, DirectRadioButton
 
-from warlikecraft.characters.gender import Gender
+from nemesys.characters.gender import Gender
 
 class CharacterCreator:
     def __init__(self) -> None:
@@ -36,7 +36,7 @@ class CharacterCreator:
                 value=[Gender.MALE],
                 scale=0.05,
                 parent=gender_panel,
-                boxImage="resources/assets/pictures/bin/gender-masculine.png",
+                boxImage="resources/assets/pictures/masculine.png",
                 pos=(0, 0, 0), 
                 command=self.__use_male_gender)
         feminine_radio_button = DirectRadioButton(
@@ -45,7 +45,7 @@ class CharacterCreator:
                 value=[Gender.FEMININE],
                 scale=0.05,
                 parent=gender_panel,
-                boxImage="resources/assets/pictures/bin/gender-feminine.png",
+                boxImage="resources/assets/pictures/feminine.png",
                 pos=(0.325, 0, 0),
                 command=self.__use_male_gender)
 

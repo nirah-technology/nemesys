@@ -1,6 +1,6 @@
 from enum import Enum
 
-from warlikecraft.utils.color import Color
+from nemesys.utils.color import Color
 
 
 class QualityValue:

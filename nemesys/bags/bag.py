@@ -1,6 +1,6 @@
 from abc import abstractmethod
-from warlikecraft.items import Item
-from warlikecraft.items.item import Quality
+from nemesys.items import Item
+from nemesys.items.item import Quality
 
 class NoSpaceLeftInContainerException(Exception):
     def __init__(self, *args: object) -> None:
