@@ -25,9 +25,7 @@ class MainMenu(Menu):
     def __init__(self, parent) -> None:
         self.__menu = DirectFrame(
             frameColor = (1, 1, 1, 1),
-            frameSize=(-1, 1, -1, 1),
             pos=(0, 0, 0))
-        self.__menu.setImage("resources/assets/pictures/logon.png")
         self.hide()
         self.__button_textures = (
             parent.loader.loadTexture("resources/assets/pictures/button.png"),
@@ -60,9 +58,9 @@ class MainMenu(Menu):
                    command = self.__start_new_game,
                    pos = (0, 0, 0),
                    parent = self.__menu,
-                   scale = 0.1,
+                   scale = 0.075,
                 #    text_font = self.font,
-                #    clickSound = loader.loadSfx("Sounds/UIClick.ogg"),
+                   clickSound = loader.loadSfx("resources/sounds/item-hover.wav"),
                    frameTexture = self.__button_textures,
                    frameSize = (-4, 4, -0.75, 0.75),
                    text_scale = 0.75,
@@ -77,9 +75,9 @@ class MainMenu(Menu):
                    command = self.__continue_game,
                    pos = (0, 0, -0.25),
                    parent = self.__menu,
-                   scale = 0.1,
+                   scale = 0.075,
                 #    text_font = self.font,
-                #    clickSound = loader.loadSfx("Sounds/UIClick.ogg"),
+                   clickSound = loader.loadSfx("resources/sounds/item-hover.wav"),
                    frameTexture = self.__button_textures,
                    frameSize = (-4, 4, -0.75, 0.75),
                    text_scale = 0.6,
@@ -94,9 +92,9 @@ class MainMenu(Menu):
                    command = self.__open_game_settings,
                    pos = (0, 0, -0.5),
                    parent = self.__menu,
-                   scale = 0.1,
+                   scale = 0.075,
                 #    text_font = self.font,
-                #    clickSound = loader.loadSfx("Sounds/UIClick.ogg"),
+                   clickSound = loader.loadSfx("resources/sounds/item-hover.wav"),
                    frameTexture = self.__button_textures,
                    frameSize = (-4, 4, -0.75, 0.75),
                    text_scale = 0.75,
@@ -109,9 +107,9 @@ class MainMenu(Menu):
                    command = exit,
                    pos = (0, 0, -0.75),
                    parent = self.__menu,
-                   scale = 0.1,
+                   scale = 0.075,
                 #    text_font = self.font,
-                #    clickSound = loader.loadSfx("Sounds/UIClick.ogg"),
+                   clickSound = loader.loadSfx("resources/sounds/item-hover.wav"),
                    frameTexture = self.__button_textures,
                    frameSize = (-4, 4, -0.75, 0.75),
                    text_scale = 0.75,
