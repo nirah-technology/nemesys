@@ -1,0 +1,4 @@
+panda3d
+colorama
+panda3d-gltf
+panda3d-simplepbr

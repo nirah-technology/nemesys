@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+setup.py
+warlikecraft/__init__.py
+warlikecraft/__version__.py
+warlikecraft.egg-info/PKG-INFO
+warlikecraft.egg-info/SOURCES.txt
+warlikecraft.egg-info/dependency_links.txt
+warlikecraft.egg-info/requires.txt
+warlikecraft.egg-info/top_level.txt
+warlikecraft/bags/__init__.py
+warlikecraft/bags/bag.py
+warlikecraft/items/__init__.py
+warlikecraft/items/item.py
+warlikecraft/utils/__init__.py
+warlikecraft/utils/color.py

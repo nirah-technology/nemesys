@@ -1,0 +1,19 @@
+from enum import Enum
+
+class Resource(Enum):
+    RAGE=1
+    FOCUS=2
+    ENERGY=3
+    MANA=4
+    RUNES=5
+    RUNIC_POWER=6
+    SOUL_SHARDS=7
+    ASTRAL_POWER=8
+    HOLY_POWER=9
+    COMBO_POINT=10
+    MAELSTROM=11
+    CHI=12
+    INSANITY=13
+    ARCANICS_LOADS=16
+    FURY=17
+    SUFFERING=18
