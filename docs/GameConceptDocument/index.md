@@ -2,10 +2,11 @@
 
 *Copyright 2022, Nicolas METIVIER*
 
-Le document suivant est une proposition de jeu video de type jeu de role en temps réel, jouable sur les machine de type PC (Windows, Linux/Unix).
+Le document suivant est une proposition de jeu video de type jeu de role en temps réel, jouable sur les machines de type PC (Windows, Linux/Unix).
 
-*De quel genre le jeu se rapporche ?
-Qu'est ce qu'il apporte de plus que la concurence ?*
+NMESYS reprend les principes fondamentaux des jeux de role à monde ouvert tout en respectant un certain design afin de permetre un maximum de jouabilité, d'évolutivité et de diversification lors des phases de jeu du joueur.
+
+Avec NEMESYS, nous voulons que le joueur soit en totale liberté dans un univers... ***TBD***
 
 Le document initial sera étoffé et mis au jour lorsque les développements seront lancés.
 
@@ -16,7 +17,17 @@ Le document initial sera étoffé et mis au jour lorsque les développements ser
 
 *TBD*
 
-Le joueur créé son personnage et évolue dans un monde ouvert, vue en 3D, caméra placé derriere le personnage.
+NEMESYS est un jeu de role à monde ouvert ou le joueur va se créer un simple personnage et va le faire évoluer en le faisant intéragir avec tout l'environement qui l'entour.
+
+***Quel est le but du jeu ?***
+
+Le joueur créé son personnage et évolue dans un monde ouvert, vue en 3D, avec la caméra placée derrière le personnage. Le jeux utilise un système 'temps réel'. ***TBD***
+
+Pour déplacer le personnage, on peut utiliser:
+- le **stick analogique gauche** d'une manette de jeu compatible PC
+- les touches QZSD
+
+Le joueur peut 
 
 ### Plot And Settings
 
