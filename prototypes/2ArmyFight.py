@@ -1,6 +1,23 @@
+from datetime import datetime
 from threading import Thread
 from random import random, randint
 from time import sleep
+from colorama import init, Fore
+from logging import basicConfig, Logger, INFO, FileHandler, StreamHandler
+
+
+init(autoreset=True)
+
+basicConfig(filename='nemesys.log', encoding='utf-8', level=INFO)
+LOGGER: Logger = Logger("2ARMIES", INFO)
+file_handler = FileHandler("nemesys.log")
+file_handler.setLevel(INFO)
+
+stream_handler = StreamHandler()
+stream_handler.setLevel(INFO)
+
+LOGGER.addHandler(stream_handler)
+LOGGER.addHandler(file_handler)
 
 class Character:
     def __init__(self) -> None:
@@ -16,8 +33,11 @@ class Character:
     def is_alive(self) -> bool:
         return self.life > 0
 
+    def die(self):
+        LOGGER.info("")
+
     def attack(self, target):
-        print("{} will start combat againt {} ({} pv)".format(self.name, target.name, target.life))
+        LOGGER.info("{} will start combat againt {} ({} pv)".format(self.name, target.name, target.life))
         self.is_fighting = True
         if (self.combat != None):
             self.combat.terminate()
@@ -35,22 +55,33 @@ class Combat(Thread):
         self.fighter: Character = fighter
         self.target: Character = target
         self.__must_fight: bool = False
+        LOGGER.info("A new fight must be executed opposing {} to {}.".format(self.fighter.name, self.target.name))
     
     def run(self):
+        LOGGER.info("A combat opposing {} to {} is started.".format(self.fighter.name, self.target.name))
         self.__must_fight = True
         self.fighter.is_fighting = True
         self.target.is_fighting = True
+        start_timestamp_fight = datetime.now()
         while (self.__must_fight and self.fighter.life > 0 and self.target.life > 0):
             damage = round(random() + randint(self.fighter.damage_min, self.fighter.damage_max), 2)
-            print("{} generate {} damage.".format(self.fighter.name, damage))
+            LOGGER.info("{} generate {} damage.".format(self.fighter.name, damage))
             self.target.life -= int(damage)
-            print("{} lost {} pv. ({} pv)".format(self.target.name, damage, self.target.life))
+            LOGGER.info("{} lost {} pv. ({} pv)".format(self.target.name, damage, self.target.life))
             sleep(self.fighter.attack_speed)
-        print("{} stop to attack {}".format(self.fighter.name, self.target.name))
+        LOGGER.info("{} stop to attack {}".format(self.fighter.name, self.target.name))
         
         self.fighter.is_fighting = False
         self.target.is_fighting = False
-    
+        stop_timestamp_fight = datetime.now()
+        self.__must_fight = False
+        duration_date = (stop_timestamp_fight-start_timestamp_fight)
+        days = duration_date.days
+        hours = int((duration_date.seconds/60)/60)
+        minutes = int(duration_date.seconds/60)
+        seconds = duration_date.seconds % 60
+        LOGGER.info("{} killed {}".format(self.fighter.name, self.target.name))
+        LOGGER.info("The combat between {} and {} lasted {} days {} hours {} minutes {} seconds.".format(self.fighter.name, self.target.name, days, hours, minutes, seconds))
     def terminate(self):
         self.__must_fight = False
 
@@ -77,16 +108,24 @@ class Army:
         for _ in range(total_warriors):
             self.warriors.append(Warrior(name=self.name))
     
+    def delete_dead_warriors(self) -> list[Character]:
+        dead_warriors: list[Character] = []
+        for warrior in self.warriors:
+            if (not warrior.is_alive()):
+                self.remove_warrior(warrior)
+                dead_warriors.append(warrior)
+        return dead_warriors
+
     def remove_warrior(self, warrior: Warrior):
         self.warriors.remove(warrior)
 
     def attack(self, target_army):
-        print("{} will fight {}".format(self.name, target_army.name))
+        LOGGER.info("{} will fight {}".format(self.name, target_army.name))
         if (self.battle != None):
             self.battle.terminate()
         self.battle = Battle(fighter_army=self, target_army=target_army)
         self.battle.start()
-        print("{} start battle against {}".format(self.name, target_army.name))
+        LOGGER.info("{} start battle against {}".format(self.name, target_army.name))
 
     def had_survivor(self) -> bool:
         return len(self.warriors) > 0
@@ -97,20 +136,16 @@ class Battle(Thread):
         self.fighter_army: Army = fighter_army
         self.target_army: Army = target_army
         self.__must_fight: bool = False
-        print("Battle {} ({} warriors) againt {} ({} warriors) is ready.".format(self.fighter_army.name, len(self.fighter_army.warriors), self.target_army.name, len(self.target_army.warriors)))
+        LOGGER.info("Battle {} ({} warriors) againt {} ({} warriors) is ready.".format(self.fighter_army.name, len(self.fighter_army.warriors), self.target_army.name, len(self.target_army.warriors)))
 
     def run(self):
         self.__must_fight = True
-        print("Battle {} againt {} is starting.".format(self.fighter_army.name, self.target_army.name))
+        LOGGER.info("Battle {} againt {} is starting.".format(self.fighter_army.name, self.target_army.name))
         while (self.__must_fight and self.fighter_army.had_survivor() and self.target_army.had_survivor()):
-            for warrior in self.fighter_army.warriors:
-                if (not warrior.is_alive()):
-                    self.fighter_army.remove_warrior(warrior)
 
-            for enemy in self.target_army.warriors:
-                if (not enemy.is_alive()):
-                    self.target_army.remove_warrior(enemy)    
-            
+            self.fighter_army.delete_dead_warriors()
+            self.target_army.delete_dead_warriors()
+
             for warrior in self.fighter_army.warriors:
                 if (not warrior.is_fighting):
                     for enemy in self.target_army.warriors:
@@ -118,8 +153,8 @@ class Battle(Thread):
                             warrior.attack(enemy)
                             break
         
-        print("Battle {} againt {} is finished.".format(self.fighter_army.name, self.target_army.name))
-        print("Winer: {}".format(self.fighter_army.name if self.fighter_army.had_survivor() else self.target_army.name))
+        LOGGER.info("Battle {} againt {} is finished.".format(self.fighter_army.name, self.target_army.name))
+        LOGGER.info("Winer: {}".format(self.fighter_army.name if self.fighter_army.had_survivor() else self.target_army.name))
 
     def terminate(self): 
         self.__must_fight = False
@@ -127,8 +162,8 @@ class Battle(Thread):
 def main():
     shadows_army = Army("Shadows", 10)
     undead_army = Army("Undeads", 10)
-    print("{}: {} warriors".format(shadows_army.name, shadows_army.warriors))
-    print("{}: {} warriors".format(undead_army.name, undead_army.warriors))
+    LOGGER.info("{}: {} warriors".format(shadows_army.name, shadows_army.warriors))
+    LOGGER.info("{}: {} warriors".format(undead_army.name, undead_army.warriors))
     shadows_army.attack(target_army=undead_army)
     undead_army.attack(target_army=shadows_army)
 
