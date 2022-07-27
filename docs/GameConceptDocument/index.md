@@ -35,6 +35,50 @@ Le joueur peut
 
 ### Gameplay
 
+Lorsque le joueur lance le jeux, il tombe sur un menu qui propose 3 choix:
+- **New game**
+- **Continue game**
+- **Options**
+
+Le joueur peut sélectionner l'un des 3 choix du menu avec:
+- Les **flèches directionnelles Haut/Bas** du clavier  pour sélectionner un élément du menu, puis appuyer de la **touche Entré** pour valider le choix de la sélection.
+- La souris, en déplacant le curseur de la souris sur l'élément voulus dans le menu, puis en faisant un **click gauche** sur le choix survolé.
+- Le **joystick analogique gauche** d'une manete de jeu compatible PC pour sélectionner un élément du menu, puis appuyer sur la **touche A** de la manette pour valider le choix de la sélection.
+
+
+Quand le joueur sélectionne **New game**, il arrive sur une page de création de personnage qui se déroule comme suit:
+
+1. Selection de la faction:
+
+  - **Rebels** :  Il s'agit d'une faction d'Humain qui se révoltent contre les machines et qui ont pour objectif de désactiver G.A.I.A et son Protocol NEMESYS.
+  - **Chasseurs/Cueilleurs** : Il s'agit d'une faction d'Humain qui respectent les choix imposés par G.A.I.A et son Protocol NEMESYS et qui ont appris à vivre en symbiose avec la Nature.
+  - **Robots** : Is s'agit de membres de l'Armée de G.A.I.A. Ils s'assurent que le Protocol NEMESYS est bien appliqué, et que les Humain respectent bien les lois mise en place dans le cadre de la protection de TERRE. 
+
+2. Répartition de 5 points de compétences :
+
+  - **Endurence** : Augmente le nombre de point de vie. 20 PV par point d'Endurence.
+  - **Force** : Augmente la puissance d'attaque et réduit les dégats subis.
+  - **Agilité** : Augmente la puissance d'attaque et augmente l'esquive.
+  - **Intelligeance**: Augmente la puissance des sortillèges.
+  - **Critique** : Le déclencement d'un coup critique est aléatoire. Cependant, si une technique bénéficie de l'éffet critique, son effet est augmenté de 200% par rapport à sa valeur initiale. Par défaut, le joueur à 5% de change de coup critique. 
+  - **Hate** : Augmente la vitesse d'attaque, réduit les temps d'incantation, et augmente la régénération de l'endurance ainsi que de l'intelligence.
+  - **Esprit** : Augmente la vitesse de regénération de la vie et de l'intelligeance.
+  - **Esquive** 
+  - Vitesse
+  - Physique
+  - Sort
+  - Défence
+
+3. Choix du genre du personnage:
+
+  - Femme: Morphologie féminine.
+  - Homme: Morphologie masculine.
+  - Neutre: Morphologie neutre.
+
+4. Choix du nom du personnage.
+5. Page de résumé de la création du personnage
+6. Validation et création du personnage.
+
 *TBD*
 
 
