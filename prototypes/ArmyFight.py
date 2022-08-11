@@ -115,11 +115,11 @@ class Army:
         if (warrior in self.warriors):
             self.warriors.remove(warrior)
 
-    def attack(self, target_army):
+    def attack(self, target_army, simultaneous_fights: int):
         LOGGER.debug("{} will fight {}".format(self.name, target_army.name))
         if (self.battle != None):
             self.battle.terminate()
-        self.battle = Battle(fighter_army=self, target_army=target_army)
+        self.battle = Battle(fighter_army=self, target_army=target_army, simultaneous_fights=simultaneous_fights)
         self.battle.start()
         LOGGER.debug("{} start battle against {}".format(self.name, target_army.name))
 
@@ -130,12 +130,14 @@ class Army:
         return False if self.battle == None else self.battle.is_running()
 
 class Battle(Thread):
-    def __init__(self, fighter_army: Army, target_army: Army):
+    def __init__(self, fighter_army: Army, target_army: Army, simultaneous_fights: int):
         Thread.__init__(self)
         self.fighter_army: Army = fighter_army
         self.target_army: Army = target_army
         self.__must_fight: bool = False
+        self.simultaneous_fights: int = simultaneous_fights
         LOGGER.debug("Battle {} ({} warriors) againt {} ({} warriors) is ready.".format(self.fighter_army.name, len(self.fighter_army.warriors), self.target_army.name, len(self.target_army.warriors)))
+
 
     def run(self):
         self.__must_fight = True
@@ -145,10 +147,18 @@ class Battle(Thread):
 
             self.fighter_army.delete_dead_warriors()
             self.target_army.delete_dead_warriors()
+            fighter_warriors: list = []
+            target_warriors: list = []
+            if (self.simultaneous_fights > 0):
+                fighter_warriors: list = list(self.fighter_army.warriors[:self.simultaneous_fights])
+                target_warriors: list = list(self.target_army.warriors[:self.simultaneous_fights])
+            else:
+                fighter_warriors: list = self.fighter_army.warriors
+                target_warriors: list = self.target_army.warriors
 
-            for warrior in self.fighter_army.warriors:
+            for warrior in fighter_warriors:
                 if (not warrior.is_fighting):
-                    for enemy in self.target_army.warriors:
+                    for enemy in target_warriors:
                         if (not enemy.is_fighting):
                             warrior.attack(enemy)
                             break
